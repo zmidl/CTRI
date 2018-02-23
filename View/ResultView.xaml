@@ -1,0 +1,79 @@
+﻿<UserControl 
+    x:Class="CTRI.View.ResultView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" 
+    d:DesignHeight="470" d:DesignWidth="950">
+    <UserControl.Resources>
+        <ToolTip x:Key="ToolTip_ExportList" Style="{StaticResource RD_ToolTip}" Content="导出List信息"/>
+        <ToolTip x:Key="ToolTip_ExportFile" Style="{StaticResource RD_ToolTip}" Content="导出文件"/>
+        <ToolTip x:Key="ToolTip_ExportReport" Style="{StaticResource RD_ToolTip}" Content="导出报告"/>
+        <ToolTip x:Key="ToolTip_Search" Style="{StaticResource RD_ToolTip}" Content="查询历史记录"/>
+        <Canvas x:Key="Content_ExportList">
+            <Path Canvas.Left="6" Canvas.Top="4" Width="15" Height="18" Stretch="Fill" Data="{StaticResource  ActualData }" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Foreground}"/>
+            <Path Canvas.Left="17" Canvas.Top="10" Width="10" Height="10" Stretch="Fill" Data="{StaticResource Right}" Stroke="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Background}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Foreground}"/>
+        </Canvas>
+        <Canvas x:Key="Content_ExportFile">
+            <Path Canvas.Left="6" Canvas.Top="4" Width="15" Height="18" Stretch="Fill" Data="{StaticResource  File }" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Foreground}"/>
+            <Path Canvas.Left="17" Canvas.Top="10" Width="10" Height="10" Stretch="Fill" Data="{StaticResource Right}" Stroke="{StaticResource BlueColor}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Foreground}"/>
+        </Canvas>
+        <Canvas x:Key="Content_ExportReport">
+            <Path Canvas.Left="6" Canvas.Top="4" Width="15" Height="18" Stretch="Fill" Data="{StaticResource  Report }" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Foreground}"/>
+            <Path Canvas.Left="17" Canvas.Top="10" Width="10" Height="10" Stretch="Fill" Data="{StaticResource Right}" Stroke="{StaticResource BlueColor}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Foreground}"/>
+        </Canvas>
+        <Path x:Key="Content_Search" Margin="5" Width="18" Height="18" Stretch="Fill" Data="{StaticResource Search}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}},Path=Foreground}"/>
+
+    </UserControl.Resources>
+    <Viewbox Stretch="Fill" >
+        <Grid>
+            <DataGrid  
+                x:Name="DataGrid_ReportName"
+                VirtualizingPanel.IsVirtualizing="True" 
+                VirtualizingPanel.CacheLengthUnit="Pixel" 
+                VirtualizingPanel.IsVirtualizingWhenGrouping="True" 
+                VirtualizingPanel.ScrollUnit="Pixel" 
+                Style="{StaticResource RD_DataGridBrightStyle}" 
+                VerticalScrollBarVisibility="Visible" 
+                AutoGenerateColumns="False" 
+                ItemsSource="{Binding HistroyInformations}" 
+                Margin="10,10,70,10"  Grid.Row="0" Canvas.Left="10" Canvas.Top="5" 
+                Width="858" Height="450"  DockPanel.Dock="Left" 
+                IsReadOnly="True" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn MinWidth="40" Header="选择" Binding="{Binding Name}"/>
+                    <DataGridTextColumn MinWidth="60" Header="姓名" Binding="{Binding Name}"/>
+                    <DataGridTextColumn MinWidth="80" Header="条码" Binding="{Binding Barcode}"/>
+                    <DataGridTextColumn MinWidth="80" Header="样品号" Binding="{Binding Id}"/>
+                    <DataGridTextColumn MinWidth="38" Header="性别" Binding="{Binding Sex}"/>
+                    <DataGridTextColumn MinWidth="38" Header="年龄" Binding="{Binding Age}"/>
+                    <DataGridTextColumn MinWidth="80" Header="类型" Binding="{Binding Type}"/>
+                    <DataGridTextColumn MinWidth="120" Header="项目" Binding="{Binding Item}"/>
+                    <DataGridTextColumn MinWidth="80" Header="实验日期" Binding="{Binding ExperimentDate}"/>
+                    <DataGridTextColumn MinWidth="60" Header="DT值" />
+                    <DataGridTextColumn MinWidth="60" Header="TM值" />
+                    <DataGridTextColumn MinWidth="60" Header="结果" />
+                    <DataGridTextColumn MinWidth="40" Header="曲线" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0">
+                <Button Style="{StaticResource RD_EllipseButton}" Width="50" Height="50" Margin="0,20,0,0" 
+                        ToolTip="{StaticResource ToolTip_ExportList}" Content="{StaticResource Content_ExportList}"/>
+                
+                <Button Style="{StaticResource RD_EllipseButton}" 
+                        ToolTip="{StaticResource ToolTip_ExportFile}" Content="{StaticResource Content_ExportFile}"
+                        Command="{Binding PageDown}" Width="50" Height="50" Margin="0,8,0,0"/>
+                
+                <Button Style="{StaticResource RD_EllipseButton}" 
+                        ToolTip="{StaticResource ToolTip_ExportReport}" Content="{StaticResource Content_ExportReport}"
+                        Command="{Binding Export}" Width="50" Height="50" Margin="0,8,0,0"/>
+              
+                <Button Style="{StaticResource RD_EllipseButton}" 
+                        ToolTip="{StaticResource ToolTip_Search}" Content="{StaticResource Content_Search}"
+                        Command="{Binding ChangePopupState}" CommandParameter="true" Width="50" Height="50" Margin="0,50,0,0"/>
+
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</UserControl>

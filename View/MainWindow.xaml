@@ -1,0 +1,49 @@
+﻿<Window x:Class="CTRI.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:CTRI.ViewModel"
+        mc:Ignorable="d"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:en="clr-namespace:CTRI.ViewModel.Enumeration"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:cv="clr-namespace:CTRI.ViewModel.Converter"
+        WindowStyle="None" WindowState="Maximized"
+        Title="MainWindow" x:Name="Instance" >
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ObjectDataProvider x:Key="GetEnumValues_Number" ObjectType="{x:Type sys:Enum}"  MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="en:Number"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="GetResult" ObjectType="{x:Type vm:MainWindowViewModel}"  MethodName="Add">
+            <ObjectDataProvider.MethodParameters>
+                <sys:Int32>3</sys:Int32>
+                <sys:Int32>2</sys:Int32>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <cv:Count2IsChecked x:Key="Count2IsChecked"/>
+        <StackPanel x:Key="Button_Content" Orientation="Horizontal">
+            <Path Data="{StaticResource Cancel}" Fill="White" Stretch="Uniform"/>
+            <TextBlock Text="{DynamicResource Command}" Margin="6,2,0,0" FontSize="13" />
+        </StackPanel>
+    </Window.Resources>
+    <Viewbox Stretch="Fill">
+        <Canvas Height="500" Width="900">
+            <ContentControl 
+                x:Name="CC" 
+                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType={x:Type Canvas}}, Path=Width}"
+                Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType={x:Type Canvas}}, Path=Height}"
+                Content="{Binding Content}"/>
+        </Canvas>
+    </Viewbox>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+</Window>
