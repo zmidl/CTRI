@@ -1,20 +1,14 @@
-﻿using CTRI.Global.Common;
-using CTRI.ViewModel.Base;
+﻿using CTRI.ViewModel.Base;
 using LiveCharts;
 using LiveCharts.Defaults;
-using LiveCharts.Wpf;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace CTRI.ViewModel
 {
     public class TaskViewmodel : Base.ViewModel
     {
-        private IList<bool> optionsState;
+        private bool[] optionsState;
 
         public bool IsFirstChecked
         {
@@ -93,8 +87,6 @@ namespace CTRI.ViewModel
                 new ObservablePoint(400, 4.5),
                 new ObservablePoint(500, 3.5)
             };
-
-
             this.RaisePropertyChanged(nameof(this.LineValues));
             this.XFormatter = (value) => $"{((int)value / 60).ToString("00")}:{((int)value % 60).ToString("00")}";
         });
@@ -106,7 +98,7 @@ namespace CTRI.ViewModel
 
         public TaskViewmodel()
         {
-            this.optionsState = new List<bool> { true, false, false, false };
+            this.optionsState = new bool[] { true, false, false, false };
         }
 
         private bool CanUncheckOption()

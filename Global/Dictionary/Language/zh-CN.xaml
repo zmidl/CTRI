@@ -1,7 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:CTRI.Global.Language"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="InstrumentVersion">V1.0</system:String>
     <system:String x:Key="InstrumentName">恒温读数仪</system:String>
     <system:String x:Key="BeginExperiment">开始实验</system:String>
@@ -14,4 +14,8 @@
     <system:String x:Key="Chinese">中文</system:String>
     <system:String x:Key="English">英文</system:String>
     <system:String x:Key="SwitchView">切换视图</system:String>
+    <system:String x:Key="FirstProgram" xml:space="preserve">40.0℃&#13;&#10;40.0′</system:String>
+    <system:String x:Key="SecondProgram" xml:space="preserve">80.0℃&#13;&#10;10.0′</system:String>
+    <system:String x:Key="ThirdProgram" xml:space="preserve">40.0℃&#13;&#10;10.0′</system:String>
+    <system:String x:Key="FourthProgram" xml:space="preserve">30.0℃&#13;&#10;10.0′</system:String>
 </ResourceDictionary>

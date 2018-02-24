@@ -54,6 +54,7 @@
                         <TextBlock Margin="10,2,0,0" Text="26.56" Style="{StaticResource TextBlock}" FontSize="25"/>
 
                         <Path Margin="50,0,0,0" Stretch="Uniform" Width="24" Fill="{StaticResource BlueColor}"  Data="{StaticResource TimerSand}"/>
+                        <TextBlock Margin="10,2,0,0" Text="00:00:00" Style="{StaticResource TextBlock}" FontSize="25"/>
 
                     </StackPanel>
                     <Line Stroke="{StaticResource WathetColor}" StrokeThickness="3" Canvas.Left="20" Canvas.Top="50" X1="0" X2="910" />
@@ -87,7 +88,39 @@
                         <TextBlock Style="{StaticResource TextBlock}" FontSize="16" Text="42℃恒温扩增" Margin="3,0,0,0"/>
                     </StackPanel>
 
-                    <LiveCharts:CartesianChart Foreground="{StaticResource BlueColor}" Canvas.Left="470" Canvas.Top="110" Width="460" Height="320"  LegendLocation="Bottom">
+                    <StackPanel Background="{StaticResource WathetColor2}" Orientation="Horizontal" Width="460" Height="320" Canvas.Left="470" Canvas.Top="110">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlock}">
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Canvas Width="115" >
+                            <Rectangle Canvas.Left="50" Canvas.Top="120" Width="65" Height="60" RadiusX="5" RadiusY="5" Fill="{StaticResource BlueColor2}" />
+                            <Line X1="0" Y1="200" X2="50" Y2="150" Stroke="{StaticResource GreenColor}" StrokeThickness="1"/>
+                            <Line X1="50" Y1="150" X2="115" Y2="150" Stroke="{StaticResource BlueColor}" StrokeThickness="3"/>
+                            <TextBlock Canvas.Top="130" Canvas.Left="60" Text="{DynamicResource FirstProgram}"/>
+                        </Canvas>
+                        <Canvas Width="115" >
+                            <Rectangle Canvas.Left="50" Canvas.Top="70" Width="65" Height="60" RadiusX="5" RadiusY="5" Fill="{StaticResource BlueColor2}" />
+                            <Line X1="0" Y1="150" X2="50" Y2="100" Stroke="{StaticResource GreenColor}" StrokeThickness="1"/>
+                            <Line X1="50" Y1="100" X2="115" Y2="100" Stroke="{StaticResource BlueColor}" StrokeThickness="3"/>
+                            <TextBlock Canvas.Top="80" Canvas.Left="60" Text="{DynamicResource SecondProgram}"/>
+                        </Canvas>
+                        <Canvas Width="115" >
+                            <Rectangle Canvas.Left="50" Canvas.Top="120" Width="65" Height="60" RadiusX="5" RadiusY="5" Fill="{StaticResource BlueColor2}" />
+                            <Line X1="0" Y1="100" X2="50" Y2="150" Stroke="{StaticResource GreenColor}" StrokeThickness="1"/>
+                            <Line X1="50" Y1="150" X2="115" Y2="150" Stroke="{StaticResource BlueColor}" StrokeThickness="3"/>
+                            <TextBlock Canvas.Top="130" Canvas.Left="60" Text="{DynamicResource ThirdProgram}"/>
+                        </Canvas>
+                        <Canvas Width="115" >
+                            <Rectangle Canvas.Left="50" Canvas.Top="170" Width="65" Height="60" RadiusX="5" RadiusY="5" Fill="{StaticResource BlueColor2}" />
+                            <Line X1="0" Y1="150" X2="50" Y2="200" Stroke="{StaticResource GreenColor}" StrokeThickness="1"/>
+                            <Line X1="50" Y1="200" X2="115" Y2="200" Stroke="{StaticResource BlueColor}" StrokeThickness="3"/>
+                            <TextBlock Canvas.Top="180" Canvas.Left="60" Text="{DynamicResource FourthProgram}"/>
+                        </Canvas>
+                    </StackPanel>
+                    <!--<LiveCharts:CartesianChart Foreground="{StaticResource BlueColor}" Canvas.Left="470" Canvas.Top="110" Width="460" Height="320"  LegendLocation="Bottom">
                        
                         
                         <LiveCharts:CartesianChart.Series>
@@ -111,7 +144,7 @@
                         </LiveCharts:CartesianChart.AxisY>
 
            
-                    </LiveCharts:CartesianChart>
+                    </LiveCharts:CartesianChart>-->
                 </Canvas>
             </TabItem>
             <TabItem x:Name="Maintemance" Height=".1">
